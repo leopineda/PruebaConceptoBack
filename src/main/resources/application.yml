@@ -1,0 +1,90 @@
+# ===================================================================================================
+# Configuración Spring Boot - PRINCIPAL
+#
+# Configuración base de la aplicación, actúa en conjunto con el application-PROFILE.yml.
+# Aquí se establece la configuración base que normalmente no debería cambiar de acuerdo al
+# profile, o que podría aplicar para más de un profile.
+# ===================================================================================================
+
+# ===================================================================================================
+# Propiedades estandar de Spring.
+# Referencia completa en:
+# http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
+# ===================================================================================================
+
+management:
+  security:
+    enabled: true
+  context-path: /admin
+
+security:
+  basic:
+    enabled: false
+  user:
+    name: reportes
+    password: pr3ub4s
+  ignored: /,/index.html,/logo.png,
+
+info:
+  project:
+    version: 0.0.1
+
+spring:
+  application:
+    name: WSBackEndGestorReportes
+  http:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB
+  datasource:
+    initialize: false
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    database: MYSQL
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        current_session_context_class: org.springframework.orm.hibernate4.SpringSessionContext
+        dialect: org.hibernate.dialect.MySQL5Dialect
+  mvc:
+    favicon:
+      enabled: false
+
+entitymanager:
+  packagesToScan: fi
+# Naming strategy
+
+application:
+  # por defecto cors esta desactivado, descomentar las siguientes lineas para activarlo
+  #cors:
+    #allowed-origins: "*"
+    #allowed-methods: GET, PUT, POST, DELETE, OPTIONS
+    #allowed-headers: "*"
+    #exposed-headers:
+    #allow-credentials: true
+    #max-age: 1800
+  swagger:
+    default-include-pattern: /reporte/.*
+    title: API Gestor de Reportes
+    description: Documentación de API REST Gestor de Reportes
+    version: 0.0.1
+    terms-of-service-url:
+    contact-name: Leonel Pineda
+    contact-url:
+    contact-email: leopined@gmail.com.net
+    license:
+    license-url:
+
+thread:
+    pool:
+        size:
+            core: 10
+
+
+
+

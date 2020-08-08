@@ -1,0 +1,11 @@
+---
+applications:
+- name: dev-GestorReportes
+  buildpack: https://github.com/cloudfoundry/java-buildpack.git
+  memory: 1G
+  timeout: 460
+  path: target/backend-gestor-reportes-1.0.0.war
+  env:
+    TZ: America/Mexico_City
+  services:
+    - GestorReportes
